@@ -30,5 +30,44 @@ namespace Assignment1.Tests
             Assert.Equal(expectedList, resultList);
 
         }
+
+        [Fact]
+        public void Filter_Returns_All_Evens() 
+        {
+            IEnumerable<int> inputList = new List<int> {1,2,3,4,5,6,7,8,9};
+            IEnumerable<int> expectedList = new List<int> {2,4,6,8};
+            Predicate<int> even = Iterators.Even;
+
+            IEnumerable<int> resultList = Iterators.Filter<int>(inputList, even);
+
+            Assert.Equal(expectedList, resultList);
+
+        }
+
+        [Fact]
+        public void Filter_Returns_Divisible_By_Four() 
+        {
+            IEnumerable<int> inputList = new List<int> {1,2,3,4,5,6,7,8,9};
+            IEnumerable<int> expectedList = new List<int> {4,8};
+            Predicate<int> four = Iterators.DivisibleByFour;
+
+            IEnumerable<int> resultList = Iterators.Filter<int>(inputList, four);
+
+            Assert.Equal(expectedList, resultList);
+
+        }
+
+        [Fact]
+        public void Filter_Returns_Strings_With_Length_Three() 
+        {
+            IEnumerable<string> inputList = new List<string> {"str", "four","three","123"};
+            IEnumerable<string> expectedList = new List<string> {"str","123"};
+            Predicate<string> lengthEqualsThree = Iterators.LengthEqualsThree;
+
+            IEnumerable<string> resultList = Iterators.Filter<string>(inputList, lengthEqualsThree);
+
+            Assert.Equal(expectedList, resultList);
+
+        }
     }
 }

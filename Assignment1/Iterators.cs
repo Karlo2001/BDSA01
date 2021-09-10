@@ -31,5 +31,17 @@ namespace Assignment1
         {
             return i % 2 == 1;
         }
+        public static bool Even(int i)
+        {
+            return i % 2 == 0;
+        }
+        public static bool DivisibleByFour(int i)
+        {
+            return i % 4 == 0;
+        }
+        public static bool LengthEqualsThree(string str)
+        {
+            return str.Length == 3;
+        }
     }
 }
