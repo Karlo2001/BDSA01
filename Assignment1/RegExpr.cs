@@ -37,13 +37,13 @@ namespace Assignment1
 
         public static IEnumerable<string> InnerText(string html, string tag)
         {
-            //Doesnt work yet!!
-            var pattern = @"(<(" + tag + ")>)+((?<Inner_Text>[a-zA-Z]+)|(?:<.+>)*?)+(</\\2>)";
+            var pattern = @"<(" + tag + ")>(.+)<\\/\\1>";
+            var replacePattern = @"(<[^>]+>)+";
             Regex rgx = new Regex(pattern);
-            GroupCollection groups = rgx.Match(html).Groups;
             foreach (Match match in rgx.Matches(html))
             {
-                yield return groups["Inner_Text"].Value;
+                Regex reg = new Regex(replacePattern);
+                yield return reg.Replace(match.Groups[2].Value, @"");
             }
         }
     }
